@@ -10,6 +10,8 @@ from vimmock.mocked import LineMock
 from vimmock.mocked import RangeMock
 from vimmock.mocked import VimMock
 from vimmock.mocked import WindowMock
+import sys
+import vimmock
 
 
 class TestVimMock(unittest.TestCase):
@@ -69,6 +71,15 @@ class TestCurrentMock(unittest.TestCase):
         self.assertTrue(isinstance(self.current.line, LineMock))
         self.assertTrue(isinstance(self.current.window, WindowMock))
         self.assertTrue(isinstance(self.current.range, RangeMock))
+
+
+class TestPatch(unittest.TestCase):
+
+    def test_patch_vim(self):
+        sys.modules['vim'] = object()
+
+        vimmock.patch_vim()
+        self.assertIsInstance(sys.modules['vim'], VimMock)
 
 
 if __name__ == '__main__':

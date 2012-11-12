@@ -13,8 +13,13 @@ Usage
 =====
 
 At the test environment initialization one should prepare ``vim`` object that
-would normaly be used within vim's plugin. Example::
+would normaly be used within vim's plugin. We have added convenient function for
+that::
 
+    import vimmock
+    vimmock.patch_vim()
+
+This is equivalent to::
 
     import sys
     from vimmock import VimMock
@@ -22,7 +27,8 @@ would normaly be used within vim's plugin. Example::
     sys.modules['vim'] = VimMock()
 
 Once this is done one can start importing *vim* module which would be instance
-of *VimMock* class. From now on we can write our tests::
+of *VimMock* class. From now on we can write our tests (and import ``vim``
+module)::
 
     import vim
     import unittest
@@ -45,4 +51,13 @@ Development
 
 Please use github's issue tracker for filing new issues. Preferred way of
 attaching patches is via *pull requests*.
+
+
+Work in progress
+----------------
+
+Please note that ``vimmock`` is a work-in-progress module. Only basic mocks are
+actually completed. If you want to use this module for now it is best if you
+fork it, link to your ``PYTHONPATH`` environment variable and modify on the fly.
+Pull requests are welcome!
 
