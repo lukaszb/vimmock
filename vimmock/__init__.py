@@ -4,7 +4,7 @@ vim mock object for easier testing of vim plugins written in Python.
 import sys
 from vimmock.mocked import VimMock
 
-VERSION = (0, 1, 0)
+VERSION = (0, 1, 1)
 
 __all__ = ['VimMock']
 __version__ = '.'.join((str(each) for each in VERSION[:4]))
